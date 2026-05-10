@@ -20,7 +20,7 @@ A computer vision pipeline that takes a photo of a Sudoku puzzle, reads every di
 
 | Input photo | Solved output |
 |:-----------:|:-------------:|
-| <img src="images/sudoku.jpg" width="400" alt="Input Sudoku"/> | <img src="images/solved.jpg" width="400" alt="Solved Sudoku"/> |
+| <img src="images/sudoku.jpg" width="400" alt="Input Sudoku"/> | <img src="images/solved.png" width="400" alt="Solved Sudoku"/> |
 
 ## 🧠 Pipeline
 
