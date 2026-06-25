@@ -1,12 +1,3 @@
-"""
-main.py — OpenCV Sudoku Solver entry point
-
-Usage:
-    python main.py --train                              # train digit classifier
-    python main.py --image images/sudoku.jpg            # solve & display
-    python main.py --image images/sudoku.jpg --output images/solved.jpg
-"""
-
 import argparse
 import copy
 import sys
