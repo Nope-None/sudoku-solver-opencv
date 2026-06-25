@@ -1,8 +1,3 @@
-"""
-tests/test_solver.py — pytest unit tests for the backtracking solver
-Run with: pytest tests/ -v
-"""
-
 import sys, os
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), ".."))
 
