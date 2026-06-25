@@ -1,14 +1,3 @@
-"""
-src/digit_recognizer.py
-CNN model definition, MNIST training, and inference utilities.
-
-Fixes applied:
-- Crop 15% border from each cell edge to remove grid lines
-- Empty-cell threshold raised 0.05 -> 0.12
-- MNIST-style digit centering before inference
-- Class 0 predictions treated as empty (0 never appears in Sudoku)
-"""
-
 import cv2
 import numpy as np
 
@@ -54,17 +43,12 @@ def crop_cell(cell):
 
 
 def is_empty_cell(cell, threshold=0.12):
-    """
-    True if cell has no digit.
-    threshold=0.12 (was 0.05) prevents grid line artifacts being read as digits.
-    """
     inner = crop_cell(cell)
     _, binary = cv2.threshold(inner, 0, 255, cv2.THRESH_BINARY_INV + cv2.THRESH_OTSU)
     return (np.sum(binary > 0) / binary.size) < threshold
 
 
 def prepare_cell(cell):
-    """Crop borders, centre digit bounding box (MNIST style), resize to 28x28, normalise."""
     inner = crop_cell(cell)
     _, binary = cv2.threshold(inner, 0, 255, cv2.THRESH_BINARY_INV + cv2.THRESH_OTSU)
     coords = cv2.findNonZero(binary)
@@ -79,7 +63,6 @@ def prepare_cell(cell):
 
 
 def read_board(cells, model):
-    """Return a 9x9 board from 81 cell images (0 = empty)."""
     empty_flags = [is_empty_cell(c) for c in cells]
     indices = [i for i, e in enumerate(empty_flags) if not e]
     pred_map = {}
